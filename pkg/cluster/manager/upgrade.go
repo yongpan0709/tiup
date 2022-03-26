@@ -252,10 +252,8 @@ func versionCompare(curVersion, newVersion string) error {
 	}
 
 	switch semver.Compare(curVersion, newVersion) {
-	case -1:
+	case -1, 0, 1:
 		return nil
-	case 0, 1:
-		return perrs.Errorf("please specify a higher version than %s", curVersion)
 	default:
 		return perrs.Errorf("unreachable")
 	}
